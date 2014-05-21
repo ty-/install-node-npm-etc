@@ -15,8 +15,7 @@ These instructions assume a linux based operating system, specifcally Ubuntu and
 ```
 sudo apt-get install git-core curl build-essential openssl libssl-dev
 cd $HOME
-mkdir build
-cd !$
+mkdir build && cd $_
 wget http://nodejs.org/dist/v0.10.28/node-v0.10.28.tar.gz
 tar xzvf node-v0.10.28.tar.gz
 cd node-v0.10.28
@@ -49,6 +48,7 @@ This part is important because it will allow the npm packages to install in user
 
 ```
 echo prefix = ~/.node >> ~/.npmrc
+export PATH="$PATH":~/.node/bin
 ```
 
 Now try to install an npm package, yoeman's pretty cool:
@@ -58,3 +58,26 @@ npm install -g yo
 ```
 
 Now you should be ready to go!
+
+
+## Generating a Website with yo
+
+Lets start with the [generator-angular-fullstack](https://www.npmjs.org/package/generator-angular-fullstack)
+
+```npm install -g generator-angular-fullstack```
+
+Create the site:
+
+```
+mkdir $HOME/yo-sites && cd $_
+mkdir my-new-project && cd $_
+yo angular-fullstack sweet-site
+```
+
+Say no to all the options for this test.
+
+After it generates, run it:
+
+```
+grunt serve
+```
